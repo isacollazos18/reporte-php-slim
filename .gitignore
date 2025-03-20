@@ -3,6 +3,8 @@
 /vendor/*
 /config/app.php
 
+# O asegurarse de que se suba:
+!vendor/
 /tmp/cache/models/*
 !/tmp/cache/models/empty
 /tmp/cache/persistent/*
@@ -23,3 +25,4 @@
 /app/Config/core.php
 /app/Config/database.php
 /vendors/*
+
