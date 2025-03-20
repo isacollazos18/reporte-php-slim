@@ -12,15 +12,13 @@ Los reportes pueden visualizarse en **HTML** y descargarse en **PDF** con la bib
 | Tecnología         | Versión  |
 |-------------------|---------|
 | **PHP**          | 8.0.30  |
-| **Docker**       | Latest  |
-| **Docker Compose** | Latest  |
+| **Docker**       | 28.0.1  |
+| **Docker Compose** | 2.33.1 |
 | **Composer**     | 2.5.8   |
 | **Slim Framework** | 4.14.0  |
 | **Dompdf**       | 3.1.0   |
 
 ---
-
-
 
 Para ver todas las dependencias, ejecuta dentro del contenedor:
 
