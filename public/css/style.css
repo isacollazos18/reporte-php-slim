@@ -1,4 +1,4 @@
-/* Establecer la fuente global a Poppins */
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
@@ -7,46 +7,39 @@ body {
     color: #333;
 }
 
-/* Título */
 h1 {
     text-align: center;
     color: #333;
     margin-top: 20px;
 }
 
-/* Estilo para la tabla */
 table {
     width: 80%;
     margin: 20px auto;
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 10px; /* border-radius para la tabla */
+    border-radius: 10px; 
     overflow: hidden;
 }
 
-/* Estilo para las celdas de la tabla */
 th, td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
 }
 
-/* Fondo para los encabezados */
 th {
     background-color: #f2f2f2;
 }
 
-/* Estilo para las filas alternas */
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* Agregar borde redondeado a las celdas */
 th, td {
     border-radius: 8px;
 }
 
-/* Estilo de las filas de la tabla */
 tr:hover {
     background-color: #e9e9e9;
 }

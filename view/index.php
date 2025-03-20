@@ -1,24 +1,20 @@
 <?php
 
-require 'vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use Slim\Factory\AppFactory;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-// Crear la aplicación Slim
 $app = AppFactory::create();
 
-// Ruta para mostrar el reporte de fallos en formato HTML
 $app->get('/reporte', function ($request, $response, $args) {
-    // Datos simulados de los fallos en la aplicación
     $fallos = [
         ['id' => 1, 'fecha' => '2025-03-19', 'error' => 'Fallo de conexión a la base de datos', 'descripcion' => 'La aplicación no pudo conectar con la base de datos debido a un error de autenticación.'],
         ['id' => 2, 'fecha' => '2025-03-20', 'error' => 'Error 500 en la API', 'descripcion' => 'La API respondió con un error 500 al procesar la solicitud.'],
         ['id' => 3, 'fecha' => '2025-03-21', 'error' => 'Fallo en la carga de recursos estáticos', 'descripcion' => 'Algunos recursos estáticos (como imágenes y archivos JS) no se cargaron correctamente debido a una configuración incorrecta.']
     ];
 
-    // Generar HTML para el reporte de fallos
     $html = '<!DOCTYPE html>
             <html lang="es">
             <head>
@@ -54,21 +50,18 @@ $app->get('/reporte', function ($request, $response, $args) {
 </body>
 </html>';
 
-    // Enviar el contenido HTML al navegador
     $response->getBody()->write($html);
     return $response;
 });
 
 
 $app->get('/reporte/pdf', function ($request, $response, $args) {
-    // Datos simulados de los fallos en la aplicación
     $fallos = [
         ['id' => 1, 'fecha' => '2025-03-19', 'error' => 'Fallo de conexión a la base de datos', 'descripcion' => 'La aplicación no pudo conectar con la base de datos debido a un error de autenticación.'],
         ['id' => 2, 'fecha' => '2025-03-20', 'error' => 'Error 500 en la API', 'descripcion' => 'La API respondió con un error 500 al procesar la solicitud.'],
         ['id' => 3, 'fecha' => '2025-03-21', 'error' => 'Fallo en la carga de recursos estáticos', 'descripcion' => 'Algunos recursos estáticos (como imágenes y archivos JS) no se cargaron correctamente debido a una configuración incorrecta.']
     ];
 
-    // Generar HTML para el reporte
     $html = '<h1>Reporte de Fallos en la Aplicación</h1><table border="1" cellpadding="5" cellspacing="0">';
     $html .= '<thead><tr><th>ID</th><th>Fecha</th><th>Error</th><th>Descripción</th></tr></thead><tbody>';
 
@@ -83,20 +76,15 @@ $app->get('/reporte/pdf', function ($request, $response, $args) {
 
     $html .= '</tbody></table>';
 
-    // Configuración de Dompdf para generar el PDF
     $dompdf = new Dompdf();
     $dompdf->loadHtml($html);
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
 
-    // Escribir el contenido del PDF en el cuerpo de la respuesta
     $response->getBody()->write($dompdf->output());
 
-    // Retornar la respuesta con los encabezados adecuados
     return $response->withHeader('Content-Type', 'application/pdf')
                     ->withHeader('Content-Disposition', 'attachment; filename="reporte_fallos.pdf"');
 });
 
-
-// Ejecutar la aplicación
 $app->run();
