@@ -1,10 +1,8 @@
 # CakePHP 3
 
-/vendor/*
 /config/app.php
 
-# O asegurarse de que se suba:
-!vendor/
+# O asegurarse de que se suba
 /tmp/cache/models/*
 !/tmp/cache/models/empty
 /tmp/cache/persistent/*
