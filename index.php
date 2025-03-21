@@ -2,7 +2,6 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-
 use Slim\Factory\AppFactory;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -22,7 +21,7 @@ $app->get('/reporte', function ($request, $response, $args) {
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Reporte de Fallos</title>
-                <link rel="stylesheet" href="/public/css/style.css">
+                <link rel="stylesheet" href="/public/css/style.css"> <!-- Verifica que esta ruta sea correcta -->
                 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
             </head>
             <body>
@@ -82,10 +81,9 @@ $app->get('/reporte/pdf', function ($request, $response, $args) {
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
 
-    $response->getBody()->write($dompdf->output());
-
     return $response->withHeader('Content-Type', 'application/pdf')
-                    ->withHeader('Content-Disposition', 'attachment; filename="reporte_fallos.pdf"');
+                    ->withHeader('Content-Disposition', 'attachment; filename="reporte_fallos.pdf"')
+                    ->write($dompdf->output());
 });
 
 $app->run();
