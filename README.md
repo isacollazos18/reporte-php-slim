@@ -20,7 +20,27 @@ Los reportes pueden visualizarse en **HTML** y descargarse en **PDF** con la bib
 
 ---
 
-Para ver todas las dependencias, ejecuta dentro del contenedor:
+## 📝 Requisitos previos
 
-```bash
-composer show
+Para ejecutar este proyecto, necesitas tener **Docker** instalado en tu máquina.
+
+- **Descargar Docker**: [Descargar Docker](https://www.docker.com/get-started).
+- **Verificar la instalación de Docker**: Después de instalar Docker, ejecuta el siguiente comando para verificar que Docker esté funcionando correctamente:
+
+  ```bash
+  docker --version
+
+## 1.Clonar el repositorio
+
+git clone https://github.com/isacollazos18/reporte-php-slim.git
+cd reporte-php-slim
+
+## 2. Ejecutar el proyecto con Docker
+docker-compose up --build
+
+## 3.Acceder al reporte
+Una vez que el contenedor esté corriendo, abre tu navegador y accede a las siguientes URLs:
+
+- Reporte en HTML: http://localhost:8000/reporte
+- Reporte en PDF: http://localhost:8000/reporte/pdf
+
